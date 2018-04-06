@@ -1,11 +1,10 @@
-import store from './store';
+import { store } from './store';
 import { INIT_BOARD } from '../actions/actions';
 
 const mineSweeperReducer = (state = store, action = { type: '' }) => {
-  let board;
+  const board = {};
   switch (action.type) {
     case INIT_BOARD:
-      board = {};
       for (let r = 0; r < 9; r += 1) {
         for (let c = 0; c < 9; c += 1) {
           const location = `${r}, ${c}`;
@@ -17,8 +16,9 @@ const mineSweeperReducer = (state = store, action = { type: '' }) => {
           }
         }
       }
-    default:
       return { board, ...state };
+    default:
+      return state;
   }
 };
 

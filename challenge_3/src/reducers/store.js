@@ -1,4 +1,4 @@
-const defStore = {
+const store = {
   board: {
     '0, 0': {
       hasMine: false,
@@ -9,4 +9,4 @@ const defStore = {
   size: 9,
 };
 
-export default defStore;
+export default store;
