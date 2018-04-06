@@ -1,12 +1,12 @@
-const store = {
+const defStore = {
   board: {
-    '0-0': {
+    '0, 0': {
       hasMine: false,
       hasFlag: false,
-      isOpen: true
-    }
+      isOpen: true,
+    },
   },
-  size: 9
-}
+  size: 9,
+};
 
-export default store;
+export default defStore;
