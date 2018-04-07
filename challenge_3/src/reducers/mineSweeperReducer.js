@@ -1,5 +1,3 @@
-import { INIT_BOARD } from '../actions/actions';
-
 const defStore = {
   board: {
   },
