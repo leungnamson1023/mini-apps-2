@@ -26,10 +26,30 @@ const emptyBoard = (boardSize) => {
 const mineSweeperReducer = (state = defStore, action = {type: ""}) => {
   switch (action.type) {
     case 'INIT_BOARD':
+    const boardSize = action.size;
     const board = emptyBoard(action.size);
     action.mineLocations.forEach((location) => {
       board[location].hasMine = true;
-    })
+    });
+
+    for (let r = 0; r < boardSize; r += 1) {
+      for (let c = 0; c < boardSize; c += 1) {
+        const location = `${r}, ${c}`;
+        if (board[location].hasMine) { continue; }
+        let mineCount = 0;
+
+        for (let x = r - 1; x <= r + 1; x += 1) {
+          for (let y = c - 1; y <= c + 1; y += 1) {
+            const mineCheck = `${x}, ${y}`;
+            if (board[mineCheck] && board[mineCheck].hasMine) {
+              mineCount += 1;
+            }
+          }
+        }
+        board[location].count = mineCount;
+      }
+    }
+
       return { ...state, board };
     default:
       return state;
