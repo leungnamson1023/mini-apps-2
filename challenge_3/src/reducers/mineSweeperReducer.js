@@ -17,7 +17,7 @@ const emptyBoard = (boardSize) => {
   for (let r = 0; r < boardSize; r += 1) {
     for (let c = 0; c < boardSize; c += 1) {
       const location = `${r}, ${c}`;
-      board[location] = {};
+      board[location] = {...defStore.defaultCell};
     }
   }
   return board;
@@ -26,14 +26,10 @@ const emptyBoard = (boardSize) => {
 const mineSweeperReducer = (state = defStore, action = {type: ""}) => {
   switch (action.type) {
     case 'INIT_BOARD':
-    const board = {};
-      for (let r = 0; r < action.size; r += 1) {
-        for (let c = 0; c < action.size; c += 1) {
-          const location = `${r}, ${c}`;
-          board[location] = {};
-          board[location].hasMine = action.mineLocations.includes(location)
-        }
-      }
+    const board = emptyBoard(action.size);
+    action.mineLocations.forEach((location) => {
+      board[location].hasMine = true;
+    })
       return { ...state, board };
     default:
       return state;
