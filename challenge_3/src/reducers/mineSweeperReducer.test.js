@@ -36,6 +36,7 @@ describe('checks for mines', () => {
   })
 
   it('init board', () => {
+    console.log(newBoard);
     expect(newBoard.board).toBeDefined();
     expect(newBoard.board['0, 0'].hasMine).toEqual(false);
     expect(newBoard.board['0, 1'].hasMine).toEqual(true);        expect(newBoard.board['0, 1'].hasMine).toEqual(true);
