@@ -2,19 +2,26 @@ import { INIT_BOARD } from '../actions/actions';
 
 const defStore = {
   board: {
-    '0, 0': {
-      hasMine: false,
-      hasFlag: false,
-      isOpen: true,
-    },
-    '0, 1': {
-      hasMine: true,
-      hasFlag: false,
-      isOpen: false,
-    }
+  },
+  defaultCell: {
+    hasMine: false,
+    hasFlag: false,
+    isOpen: false,
+    count: 0
   },
   size: 9,
 };
+
+const emptyBoard = (boardSize) => {
+  const board = {};
+  for (let r = 0; r < boardSize; r += 1) {
+    for (let c = 0; c < boardSize; c += 1) {
+      const location = `${r}, ${c}`;
+      board[location] = {};
+    }
+  }
+  return board;
+}
 
 const mineSweeperReducer = (state = defStore, action = {type: ""}) => {
   switch (action.type) {
@@ -51,4 +58,9 @@ const mineSweeperReducer = (state = defStore, action = {type: ""}) => {
 
 // console.log(makeBoard());
 
-export default mineSweeperReducer;
+export {
+  mineSweeperReducer as default,
+  emptyBoard
+}
+
+
