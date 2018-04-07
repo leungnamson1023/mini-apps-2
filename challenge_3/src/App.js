@@ -5,10 +5,25 @@ import mineSweeperReducer from './reducers/mineSweeperReducer';
 import MineSweeper from './MineSweeper';
 import BoardContainer from './containers/BoardContainer';
 
+const randomMines = (num) => {
+  let bombPositions = [];
+  let count = 0;
+
+  while (count < num) {
+  let row = Math.floor(Math.random() * num);
+  let col = Math.floor(Math.random() * num);
+    if (!bombPositions.includes(([`${row}, ${col}`]))) {
+      bombPositions.push(`${row}, ${col}`);
+      count += 1;
+    }
+  }
+  return bombPositions;
+}
+
 const initAction = {
   type: 'INIT_BOARD',
   size: 9,
-  mineLocations: ['0, 1', '1, 1', '3, 3', '2, 1', '4, 3', '1, 5']
+  mineLocations: randomMines(9)
 };
 
 const App = () => {

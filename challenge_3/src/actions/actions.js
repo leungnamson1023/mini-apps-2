@@ -1,3 +1,5 @@
 const INIT_BOARD = 'INIT_BOARD';
+const OPEN_CELL = "OPEN_CELL";
+const TOGGLE_CELL_FLAG = "TOGGLE_CELL_FLAG";
 
-export default INIT_BOARD;
+export default { INIT_BOARD, OPEN_CELL, TOGGLE_CELL_FLAG };
