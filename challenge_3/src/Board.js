@@ -2,7 +2,7 @@ import React from 'react';
 import Row from './Row'
 
 const Board = ({ tableBoard }) => (
-    <table>
+    <table className="Table">
       <tbody>
         {tableBoard.map((cells, i) => (
           <Row cells={cells} key={`row${i}`}/>
